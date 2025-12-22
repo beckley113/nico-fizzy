@@ -7,3 +7,9 @@
   end
 %>
 <%= ERB.new(File.read(config_path)).result %>
+
+google:
+  service: GCS
+  project: <%= ENV["GCS_PROJECT"] %>
+  credentials: <%= Base64.decode64(ENV["GCS_CREDENTIALS"]) %>
+  bucket: <%= ENV["GCS_BUCKET"] %>
