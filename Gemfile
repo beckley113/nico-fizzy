@@ -12,7 +12,6 @@ gem "turbo-rails"
 
 # Deployment and drivers
 gem "bootsnap", require: false
-gem "kamal", require: false
 gem "puma", ">= 5.0"
 gem "solid_cable", ">= 3.0"
 gem "solid_cache", "~> 1.0"
@@ -31,7 +30,7 @@ gem "jbuilder"
 gem "lexxy", bc: "lexxy"
 gem "image_processing", "~> 1.14"
 gem "platform_agent"
-gem "aws-sdk-s3", require: false
+gem "google-cloud-storage", "~> 1.11", require: false
 gem "web-push"
 gem "net-http-persistent"
 gem "rubyzip", require: "zip"
