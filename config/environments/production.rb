@@ -11,7 +11,6 @@ Rails.application.configure do
   config.action_mailer.resend_settings = {
   api_key: ENV['RESEND_API_KEY']
   }
-  end
 
   # Base URL for links in emails and other external references.
   # Set BASE_URL to your instance's public URL (e.g., https://fizzy.example.com)
