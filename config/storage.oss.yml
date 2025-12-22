@@ -30,6 +30,6 @@ s3:
 
 google:
   service: GCS
-  project: <%= ENV.fetch("GCS_PROJECT", "") %>
-  credentials: <%= ENV.fetch("GCS_CREDENTIALS", "{}") %>
-  bucket: <%= ENV.fetch("GCS_BUCKET", "") %>
+  project: <%= ENV.fetch("GCS_PROJECT", '""') %>
+  credentials: <%= ENV.fetch("GCS_CREDENTIALS", '""') %>
+  bucket: <%= ENV.fetch("GCS_BUCKET", '""') %>
