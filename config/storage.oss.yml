@@ -27,3 +27,9 @@ s3:
   request_checksum_calculation: <%= ENV.fetch("S3_REQUEST_CHECKSUM_CALCULATION", "when_supported") %>
   response_checksum_validation: <%= ENV.fetch("S3_RESPONSE_CHECKSUM_VALIDATION", "when_supported") %>
   secret_access_key: <%= ENV["S3_SECRET_ACCESS_KEY"] %>
+
+google:
+  service: GCS
+  project: <%= ENV.fetch("GCS_PROJECT", "") %>
+  credentials: <%= ENV.fetch("GCS_CREDENTIALS", "{}") %>
+  bucket: <%= ENV.fetch("GCS_BUCKET", "") %>
