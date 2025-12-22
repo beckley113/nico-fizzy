@@ -10,6 +10,6 @@
 
 google:
   service: GCS
-  project: <%= ENV["GCS_PROJECT"] %>
-  credentials: <%= Base64.decode64(ENV["GCS_CREDENTIALS"]) %>
-  bucket: <%= ENV["GCS_BUCKET"] %>
+  project: <%= ENV.fetch("GCS_PROJECT", "") %>
+  credentials: <%= ENV.fetch("GCS_CREDENTIALS", "{}") %>
+  bucket: <%= ENV.fetch("GCS_BUCKET", "") %>
