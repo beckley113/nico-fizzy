@@ -3,7 +3,22 @@
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "./bin/thrust" ] && [ "${2}" == "./bin/rails" ] && [ "${3}" == "server" ]; then
   MIGRATE=1 ./bin/rails db:prepare
-  ./bin/rails db:schema:load:queue db:schema:load:cable db:schema:load:cache
+
+  # Load secondary database schemas only if their tables don't exist yet
+  ./bin/rails runner "
+    unless ActiveRecord::Base.connection.table_exists?('solid_queue_jobs')
+      puts 'Loading queue schema...'
+      ActiveRecord::Tasks::DatabaseTasks.load_schema_current(ActiveRecord.schema_format, 'db/queue_schema.rb', 'queue')
+    end
+    unless ActiveRecord::Base.connection.table_exists?('solid_cable_messages')
+      puts 'Loading cable schema...'
+      ActiveRecord::Tasks::DatabaseTasks.load_schema_current(ActiveRecord.schema_format, 'db/cable_schema.rb', 'cable')
+    end
+    unless ActiveRecord::Base.connection.table_exists?('solid_cache_entries')
+      puts 'Loading cache schema...'
+      ActiveRecord::Tasks::DatabaseTasks.load_schema_current(ActiveRecord.schema_format, 'db/cache_schema.rb', 'cache')
+    end
+  "
 fi
 
 exec "${@}"
