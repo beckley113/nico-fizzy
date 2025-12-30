@@ -32,13 +32,13 @@ production:
     database: fizzy_production
   cable:
     <<: *default
-    database: fizzy_production_cable
+    database: fizzy_production
     migrations_paths: db/cable_migrate
   queue:
     <<: *default
-    database: fizzy_production_queue
+    database: fizzy_production
     migrations_paths: db/queue_migrate
   cache:
     <<: *default
-    database: fizzy_production_cache
+    database: fizzy_production
     migrations_paths: db/cache_migrate
